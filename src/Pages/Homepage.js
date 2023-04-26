@@ -6,11 +6,11 @@ import EditMember from "../Components/EditMember"
 import firebase from "../DatabaseComponents/firebase";
 import CreateModal from "../Components/CreateModal"
 import Loading from '../Components/Loading';
-import CreateTreeTable from "../Components/CreateTreeTable";
-
 
 function Homepage(home_props)
 {
+
+
     home_props.setpageactivation(true);
     return (
         <>
@@ -21,7 +21,6 @@ function Homepage(home_props)
                 </div>
                 <div className="card-body">
 
-                {/* <CreateTreeTable /> */}
 
                 </div>
         </div>
