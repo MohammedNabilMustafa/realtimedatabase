@@ -13,10 +13,52 @@ function CreateTable(create_props) {
     const [filterfield, filterfieldtData] = React.useState(create_props.columns);
     const [select_search, setSelect_search] = React.useState([{}]);
 
+    const [searchCol , setSearchCol ] = React.useState([{}]);
+
+    
+    // console.log(create_props.data);
+    // console.log(create_props.columns);
+
+    // function get_uniq_arr_field() {
+    //     let arr_saved = [];
+    //     let arr_saved_index = 0;
+
+    //     data.map((item, index) => {
+
+    //         if (event.target.value.fieldname) {
+    //             arr_saved[arr_saved_index] = item[event.target.value.fieldname] ;
+    //             arr_saved_index++;
+    //         }
+
+    //     }
+    //     )
+
+        
+    //     data.map((item, index) => {
+
+    //         if (event.target.value.fieldname) {
+    //             arr_saved[arr_saved_index] = item[event.target.value.fieldname] ;
+    //             arr_saved_index++;
+    //         }
+
+    //     }
+    //     )
+
+    //     let obj = [];
+
+    //     arr_saved.filter(onlyUnique).map((item, index) => {
+    //         obj[index] = { id: event.target.value.fieldname, name: item };
+    //     })
+
+    //     setSelect_search(obj);
+    // }
+
+
     function get_uniq_arr(event) {
         let arr_saved = [];
         let arr_saved_index = 0;
 
+        
         data.map((item, index) => {
 
             if (event.target.value.fieldname) {
@@ -106,24 +148,13 @@ function CreateTable(create_props) {
                                 <div className="p-3 name">
 
                                     <label for="floatingInput" className="form-label">ادخل كلمة البحث</label>
+                                    {
+
+                                    }
                                     <DropDownField data={select_search} onChange={handlefilter} placeholder={"Select"}/>
 
-                                    {/* <select className="form-control mb-3">
-                                    <option value=""></option>
-                                        {
-                                            select_search.map((item, index) => {
-                                                
-                                                    return (<option value={item.id}>{item.name}</option>)
-                                            }
-                                            )
-                                        }
-                                    </select> */}
                                 </div>
 
-                                {/* <div className="p-3">
-
-                                    <button className="btn btn-primary mb-3" >بحث</button>
-                                </div> */}
 
                             </div>
 
@@ -132,7 +163,6 @@ function CreateTable(create_props) {
                         <form onSubmit={handlefilter_reset}>
 
                             <div className="p-3">
-
                                 <button className="btn btn-danger mb-3" >كل النتائج</button>
                             </div>
 

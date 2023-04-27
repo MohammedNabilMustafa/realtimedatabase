@@ -6,7 +6,9 @@ import EditMember from "../Components/EditMember"
 import firebase from "../DatabaseComponents/firebase";
 import CreateModal from "../Components/CreateModal"
 import Loading from '../Components/Loading';
+import CreateTableSearch from "../Components/CreateTableSearch";
 
+// import CreateTableSearc
 function Homepage(home_props)
 {
 
@@ -20,7 +22,7 @@ function Homepage(home_props)
                     <h3>{home_props.pagename}</h3>
                 </div>
                 <div className="card-body">
-
+                <CreateTableSearch />
 
                 </div>
         </div>
