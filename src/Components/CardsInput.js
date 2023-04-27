@@ -2,7 +2,7 @@
 import React, { useRef } from "react";
 import AddRecordDatabase from "../DatabaseComponents/AddRecordDatabase"
 import AlertMsg from "../Components/AlertMsg"
-
+import MultiSelector from "./MultiSelector";
 
 function CardsInput(CardsInputprops) {
 
@@ -64,7 +64,7 @@ function CardsInput(CardsInputprops) {
 
                                 if (item.fieldtype === "input" && item.readonly == true) {
                                     return (<div className={item.className_div}><label className={item.className_label} >{item.label}</label>
-                                        <input className={item.className} type={item.type} name={item.name} placeholder={item.placeholder} ref={item.ref} value={item.value}  readOnly/>
+                                        <input className={item.className} type={item.type} name={item.name} placeholder={item.placeholder} ref={item.ref} value={item.value} readOnly />
 
                                     </div>)
                                 }
@@ -98,9 +98,15 @@ function CardsInput(CardsInputprops) {
                                         }
                                     </select></div>)
                                 }
+                                else if (item.fieldtype === "multiselect") {
+                                    return (<div class="p-3" ><label className="form-label" >{item.label}</label>
+                                        <MultiSelector placeholder={item.placeholder} className={item.className} name={item.name} onChange={item.onchange} dataValue={item.dataValue}/>
+                                    </div>)
+
+                                }
 
                             }
-                            
+
                             )
                             }
 

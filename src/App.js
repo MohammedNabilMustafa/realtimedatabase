@@ -19,6 +19,7 @@ import PaperSize from './Pages/PaperSize';
 import PaperCal from './Pages/PaperCal';
 import PrintType from './Pages/PrintType';
 import CoverType from './Pages/CoverType';
+import ExtraType from './Pages/ExtraType';
 import Orders from './Pages/Orders';
 import FinRent from './Pages/FinRent';
 import FinMaintenance from './Pages/FinMaintenance';
@@ -85,7 +86,9 @@ function App() {
 
   const [printTypepage, setPrintTypepage] = React.useState(false);
   const [coverTypepage, setCoverTypepage] = React.useState(false);
+  const [extraTypepage, setExtraTypepage] = React.useState(false);
 
+  
   const [usertitle, setUsertitle] = React.useState('اعدادات المستخدمين');
   const [papertitle, setPapertitle] = React.useState('اعدادات الورق');
   const [printtitle, setPrinttitle] = React.useState('اعدادات الطباعة');
@@ -151,8 +154,9 @@ function App() {
                 <NavDropdown.Item href="/printType" active={printTypepage}>انواع الطباعة</NavDropdown.Item>
               </NavDropdown>
 
-              <NavDropdown title={covertitle} menuVariant='dark' active={coverTypepage}>
-                <NavDropdown.Item href="/coverType" active={coverTypepage}>انواع التغليف</NavDropdown.Item>
+              <NavDropdown title={covertitle} menuVariant='dark' active={coverTypepage || extraTypepage}>
+              <NavDropdown.Item href="/coverType" active={coverTypepage}>انواع التغليف</NavDropdown.Item>
+              <NavDropdown.Item href="/extraType" active={extraTypepage}>انواع الزيادات</NavDropdown.Item>
               </NavDropdown>
 
             </Nav>
@@ -249,6 +253,8 @@ function App() {
             <Route className="nav-item" path='/paperCal' element={<PaperCal pagename='حسبة الورق' setpageactivation={setPaperCalpage} titleset={setPapertitle} />} />
             <Route className="nav-item" path='/printType' element={<PrintType pagename='انواع الطباعة' setpageactivation={setPrintTypepage} titleset={setPrinttitle} />} />
             <Route className="nav-item" path='/coverType' element={<CoverType pagename='انواع التغليف' setpageactivation={setCoverTypepage} titleset={setCovertitle} />} />
+            <Route className="nav-item" path='/extraType' element={<ExtraType pagename='انواع الزيادات' setpageactivation={setExtraTypepage} titleset={setCovertitle} />} />
+            
             <Route path="*" element={<PageNotFound />} />
 
 

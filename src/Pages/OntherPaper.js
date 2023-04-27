@@ -13,6 +13,7 @@ function OntherPaper(OntherPaper_props) {
     const DatabaseName_paper_size = "paper_size";
     const DatabaseName_paper_cal = "paper_cal";
     const DatabaseName_cover_type = "cover_type";
+    const DatabaseName_extra_type = "extra_type";
 
     const [checkprintType, setCheckprintType] = React.useState("");
     const [checkpaperType, setCheckpaperType] = React.useState("");
@@ -24,6 +25,7 @@ function OntherPaper(OntherPaper_props) {
     const [Paperweight, setPaperweight] = React.useState([]);
     const [Papercal, setPapercal] = React.useState([]);
     const [CoverTpye, setCoverTpye] = React.useState([]);
+    const [extraType, setExtraType] = React.useState([]);
 
 
     const [paperInfo, setPaperInfo] = React.useState(
@@ -54,6 +56,10 @@ function OntherPaper(OntherPaper_props) {
 
     const [data, setData] = useState([]);
 
+    function other_check_func(event)
+    {
+
+    }
 
     function print_check_func(event) {
 
@@ -529,7 +535,7 @@ function OntherPaper(OntherPaper_props) {
                     { id: '3', name: 'وجة لامع' },
                     { id: '4', name: 'وجهان لامع' }
                 ],
-            onchange: print_check_func,
+            onchange: other_check_func,
             placeholder: "السلوفان",
             ref: useRef()
         }
@@ -541,10 +547,24 @@ function OntherPaper(OntherPaper_props) {
             name: "print_lamination",
             label: "نوع التجليد",
             dataValue: CoverTpye,
-            onchange: print_check_func,
+            onchange: other_check_func,
             placeholder: "السلوفان",
             ref: useRef()
         }
+        , {
+            fieldtype: "multiselect",
+            className: "form-check-input",
+            className_div: "p-3",
+            className_label: "form-label",
+            type: "text",
+            name: "extra",
+            label: "زيادات",
+            dataValue: extraType,
+            onchange: other_check_func,
+            placeholder: "اختر زيادات",
+            ref: useRef()
+        }
+
     ]
 
     const input_fields_user_table_paper_price = [{
@@ -621,8 +641,9 @@ function OntherPaper(OntherPaper_props) {
     const ref_paper_size = firebase.firestore().collection(DatabaseName_paper_size);
     const ref_paper_cal = firebase.firestore().collection(DatabaseName_paper_cal);
     const ref_cover_type = firebase.firestore().collection(DatabaseName_cover_type);
+    const ref_extra_type = firebase.firestore().collection(DatabaseName_extra_type);
 
-
+    
     function getdatabase_print_type(event) {
 
         if (event) {
@@ -713,6 +734,36 @@ function OntherPaper(OntherPaper_props) {
         });
     }
 
+
+
+    function getdatabase_extra_type(event) {
+
+        if (event) {
+            paper_check_func(event);
+        }
+        // setLoading(true);
+        let check_value = '';
+        if (this) {
+            check_value = event.target.value;
+        }
+
+        ref_extra_type.onSnapshot((querySnapshot) => {
+            const item = [];
+            querySnapshot.forEach((doc) => {
+                let saved_data = doc;
+                item.push(
+                    {
+                        id: saved_data.id,
+                        name: saved_data.data().name,
+                        price: saved_data.data().price
+                    }
+                );
+
+
+            })
+            setExtraType(item);
+        });
+    }
 
     function getdatabase_cover_type(event) {
 
@@ -870,8 +921,13 @@ function OntherPaper(OntherPaper_props) {
         getdatabase_cover_type();
 
     }, [])
+    useEffect(() => {
+        getdatabase_extra_type();
+
+    }, [])
 
 
+    
     OntherPaper_props.setpageactivation(true);
     OntherPaper_props.setsubpageactivation(true);
 
