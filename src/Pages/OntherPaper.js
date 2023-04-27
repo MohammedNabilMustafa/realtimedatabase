@@ -553,8 +553,8 @@ function OntherPaper(OntherPaper_props) {
         }
         , {
             fieldtype: "multiselect",
-            className: "form-check-input",
-            className_div: "p-3",
+            className: "form-check-input ",
+            className_div: "p-3 multiselectStyle",
             className_label: "form-label",
             type: "text",
             name: "extra",

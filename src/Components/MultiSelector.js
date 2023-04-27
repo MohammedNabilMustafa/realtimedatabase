@@ -14,7 +14,7 @@ export default function MultiSelector(props) {
                     props.onChange(e);
                 }
             }} options={props.dataValue} optionLabel="name" display="chip"
-            filter placeholder={props.placeholder} maxSelectedLabels={3}  />
+            filter placeholder={props.placeholder}   />
 
 
 

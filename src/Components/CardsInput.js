@@ -99,7 +99,7 @@ function CardsInput(CardsInputprops) {
                                     </select></div>)
                                 }
                                 else if (item.fieldtype === "multiselect") {
-                                    return (<div class="p-3" ><label className="form-label" >{item.label}</label>
+                                    return (<div className={item.className_div} ><label className="form-label" >{item.label}</label>
                                         <MultiSelector placeholder={item.placeholder} className={item.className} name={item.name} onChange={item.onchange} dataValue={item.dataValue}/>
                                     </div>)
 

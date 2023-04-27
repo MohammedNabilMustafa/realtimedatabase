@@ -12,6 +12,10 @@ code {
     monospace;
 }
 
+.multiselectStyle{
+  overflow: auto;
+  display: grid;
+}
 .paper-price-header{
 
 background-color: #8dc53f25 !important;
